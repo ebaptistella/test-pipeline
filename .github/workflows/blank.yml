@@ -4,16 +4,17 @@ name: CI
 
 on:
   pull_request:
+  
 jobs:
-  tfsec:
-    name: tfsec PR commenter
+  example_comment_pr:
     runs-on: ubuntu-latest
-
+    name: An example job to comment a PR
     steps:
-      - name: Clone repo
-        uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: tfsec
-        uses: tfsec/tfsec-pr-commenter-action@main
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: |
+            Hello world ! :wave:
